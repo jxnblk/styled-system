@@ -6,7 +6,7 @@
 
 - [Primer Components](https://primer.style/components)
 - [Priceline Design System](https://pricelinelabs.github.io/design-system/)
-- [Cloudflare Design Color](https://cloudflare.design/color/)
+- [Cloudflare Design Color](https://color.cloudflare.design/)
 - [Styled System HTML](https://johnpolacek.github.io/styled-system-html/)
 - [Radix](https://radix.modulz.app/docs/getting-started/)
 - [Rebass](https://rebassjs.org)

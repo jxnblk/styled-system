@@ -185,7 +185,7 @@ To learn more, see the [Getting Started](https://styled-system.com/getting-start
 
 - [Primer Components](https://primer.style/components)
 - [Priceline Design System](https://pricelinelabs.github.io/design-system/)
-- [Cloudflare Design Color](https://cloudflare.design/color/)
+- [Cloudflare Design Color](https://color.cloudflare.design/)
 - [Styled System HTML](https://johnpolacek.github.io/styled-system-html/)
 - [Rebass](https://rebassjs.org)
 - [Reflexbox](https://rebassjs.org/reflexbox/)
