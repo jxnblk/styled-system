@@ -140,11 +140,11 @@ test('gets 0 index values from theme', () => {
     width: {
       property: 'width',
       scale: 'sizes',
-    }
+    },
   })
   const style = parser({
     theme: {
-      sizes: [ 24, 48 ],
+      sizes: [24, 48],
     },
     width: 0,
   })
@@ -159,6 +159,25 @@ test('ignores null values', () => {
   expect(style).toEqual({})
 })
 
+test('ignores undefined values', () => {
+  const parser = system({
+    variant: () => ({
+      color: 'red',
+    }),
+    color: true,
+  })
+  const style = parser({ variant: 'red', color: undefined })
+  expect(style).toEqual({ color: 'red' })
+})
+
+test('ignores undefined values', () => {
+  const parser = system({
+    color: true,
+  })
+  const style = parser({ color: undefined })
+  expect(style).toEqual({})
+})
+
 test('returns a noop function with no arguments', () => {
   const parser = system()
   expect(typeof parser).toBe('function')
@@ -169,7 +188,7 @@ test('skips null values in arrays', () => {
     fontSize: true,
   })
   const style = parser({
-    fontSize: [ 16, null, null, 18 ],
+    fontSize: [16, null, null, 18],
   })
   expect(style).toEqual({
     fontSize: 16,
@@ -179,7 +198,7 @@ test('skips null values in arrays', () => {
     '@media screen and (min-width: 52em)': {},
     '@media screen and (min-width: 64em)': {
       fontSize: 18,
-    }
+    },
   })
 })
 
@@ -189,8 +208,12 @@ test('includes single property functions', () => {
     backgroundColor: true,
     width: true,
   })
-  const a = parser.color({ color: 'tomato', backgroundColor: 'nope'  })
-  const b = parser.width({ width: '100%', color: 'tomato', backgroundColor: 'nope'  })
+  const a = parser.color({ color: 'tomato', backgroundColor: 'nope' })
+  const b = parser.width({
+    width: '100%',
+    color: 'tomato',
+    backgroundColor: 'nope',
+  })
   expect(a).toEqual({ color: 'tomato' })
   expect(b).toEqual({ width: '100%' })
 })
@@ -224,7 +247,7 @@ test('supports non-array breakpoints object', () => {
         sm: '32em',
         md: '40em',
         lg: '64em',
-      }
+      },
     },
     margin: { _: 0, sm: 4, md: 8 },
     padding: { _: 16, lg: 64 },
@@ -258,7 +281,7 @@ test('sorts media queries when responsive object values are used', () => {
         md: '40em',
         lg: '64em',
         xl: '128em',
-      }
+      },
     },
     padding: { _: 16, lg: 64, xl: 128 },
     margin: { sm: 4, md: 8 },
@@ -280,8 +303,8 @@ test('transforms values', () => {
       transform: (n, scale, props) => {
         const m = props.multiply || 1
         return m * n
-      }
-    }
+      },
+    },
   })
   const a = parser({ margin: 8 })
   const b = parser({ margin: 12, multiply: 2 })

@@ -12,23 +12,25 @@ export const merge = (a, b) => {
 }
 
 // sort object-value responsive styles
-const sort = obj => {
+const sort = (obj) => {
   const next = {}
   Object.keys(obj)
-    .sort((a, b) => a.localeCompare(b, undefined, {
-      numeric: true,
-      sensitivity: 'base',
-    }))
-    .forEach(key => {
+    .sort((a, b) =>
+      a.localeCompare(b, undefined, {
+        numeric: true,
+        sensitivity: 'base',
+      })
+    )
+    .forEach((key) => {
       next[key] = obj[key]
     })
   return next
 }
 
 const defaults = {
-  breakpoints: [40, 52, 64].map(n => n + 'em'),
+  breakpoints: [40, 52, 64].map((n) => n + 'em'),
 }
-const createMediaQuery = n => `@media screen and (min-width: ${n})`
+const createMediaQuery = (n) => `@media screen and (min-width: ${n})`
 const getValue = (n, scale) => get(scale, n, n)
 
 export const get = (obj, key, def, p, undef) => {
@@ -39,15 +41,15 @@ export const get = (obj, key, def, p, undef) => {
   return obj === undef ? def : obj
 }
 
-export const createParser = config => {
+export const createParser = (config) => {
   const cache = {}
-  const parse = props => {
+  const parse = (props) => {
     let styles = {}
     let shouldSort = false
     const isCacheDisabled = props.theme && props.theme.disableStyledSystemCache
 
     for (const key in props) {
-      if (!config[key]) continue
+      if (!config[key] || props[key] === undefined) continue
       const sx = config[key]
       const raw = props[key]
       const scale = get(props.theme, sx.scale, sx.defaults)
@@ -91,9 +93,9 @@ export const createParser = config => {
   parse.propNames = Object.keys(config)
   parse.cache = cache
 
-  const keys = Object.keys(config).filter(k => k !== 'config')
+  const keys = Object.keys(config).filter((k) => k !== 'config')
   if (keys.length > 1) {
-    keys.forEach(key => {
+    keys.forEach((key) => {
       parse[key] = createParser({ [key]: config[key] })
     })
   }
@@ -147,7 +149,7 @@ export const createStyleFunction = ({
     const result = {}
     const n = transform(value, scale, _props)
     if (n === null) return
-    properties.forEach(prop => {
+    properties.forEach((prop) => {
       result[prop] = n
     })
     return result
@@ -160,7 +162,7 @@ export const createStyleFunction = ({
 // new v5 API
 export const system = (args = {}) => {
   const config = {}
-  Object.keys(args).forEach(key => {
+  Object.keys(args).forEach((key) => {
     const conf = args[key]
     if (conf === true) {
       // shortcut definition
@@ -183,7 +185,7 @@ export const system = (args = {}) => {
 
 export const compose = (...parsers) => {
   let config = {}
-  parsers.forEach(parser => {
+  parsers.forEach((parser) => {
     if (!parser || !parser.config) return
     assign(config, parser.config)
   })
