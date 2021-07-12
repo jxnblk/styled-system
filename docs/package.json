@@ -23,7 +23,7 @@
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-remark-prismjs": "^3.2.9",
-    "gatsby-source-filesystem": "^2.0.35",
+    "gatsby-source-filesystem": "^3.9.0",
     "is-absolute-url": "^3.0.0",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.1",
