@@ -16,7 +16,7 @@
     "@styled-system/babel-plugin": "0.0.20",
     "@styled-system/should-forward-prop": "^5.0.15",
     "@theme-ui/sidenav": "^0.3.1",
-    "gatsby": "^2.4.6",
+    "gatsby": "^3.9.1",
     "gatsby-plugin-emotion": "^4.0.6",
     "gatsby-plugin-google-analytics": "^2.0.20",
     "gatsby-plugin-mdx": "^1.0.5",
